@@ -1,7 +1,7 @@
 # MATLAB Fall 2018 – Research Plan
 
-> * Group Name: (be creative!)
-> * Group participants names: (alphabetically sorted by last name)
+> * Group Name: Operation Spectrum
+> * Group participants names: Hahn Thomas, Jäger Severin, Schubert Yannick
 > * Project Title: (can be changed later)
 
 ## General Introduction
