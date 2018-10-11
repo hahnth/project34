@@ -1,6 +1,7 @@
 import numpy as np
 
-def maxEig(A): #TODO Exceptions?
+
+def maxEig(A): # TODO Exceptions?
     """Returns the largest eigenvalue of a symmetric matrix"""
     eigenVals = np.linalg.eigvalsh(A)
     maxEigenVal = np.abs(eigenVals[0])
@@ -10,18 +11,18 @@ def maxEig(A): #TODO Exceptions?
     else:
         return minEigenVal
 
-#Definition of input matrix
+
+# Definition of input matrix
 A = np.array([[0,0,1,0,1],
               [0,0,1,1,0],
               [1,1,0,1,1],
               [0,1,1,0,0],
               [1,0,1,0,0]])
 
+# TODO function returning lambda with assertion (symmetric?)
 
-#TODO Assertion symmetric?
-
-print("Matrix:")
-print(A)
-print("")
-print("lamda_1 = " + str(np.round(maxEig(A))))
+# print("Matrix:")
+# print(A)
+# print("")
+# print("lambda_1 = " + str(np.round(maxEig(A), 2)))
 
