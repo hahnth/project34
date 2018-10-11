@@ -1,7 +1,9 @@
 import numpy as np
 
+from prepareFiles import fileToMatrix
 
-def maxEig(A): # TODO Exceptions?
+
+def maxEig(A): # TODO Exceptions behandeln
     """Returns the largest eigenvalue of a symmetric matrix"""
     eigenVals = np.linalg.eigvalsh(A)
     maxEigenVal = np.abs(eigenVals[0])
@@ -12,17 +14,18 @@ def maxEig(A): # TODO Exceptions?
         return minEigenVal
 
 
-# Definition of input matrix
-A = np.array([[0,0,1,0,1],
-              [0,0,1,1,0],
-              [1,1,0,1,1],
-              [0,1,1,0,0],
-              [1,0,1,0,0]])
+print("Largest Eigenvalues:")
 
-# TODO function returning lambda with assertion (symmetric?)
+A = fileToMatrix(".\data\simpleGraph.txt", ',', ',')
+print("simpleGraph: " + str(np.round(maxEig(A),2)))
 
-# print("Matrix:")
-# print(A)
-# print("")
-# print("lambda_1 = " + str(np.round(maxEig(A), 2)))
+B = fileToMatrix(".\data\largeTree.txt", ',', ',')
+print("largeTree: " + str(np.round(maxEig(B),2)))
 
+C = fileToMatrix(".\data\cities.txt", ',', ',')
+print("cities: " + str(np.round(maxEig(C),2)))
+
+D = fileToMatrix(".\data\windsurfers.txt", '\n', ' ')
+
+E = fileToMatrix(".\data\guineaTribe.txt", '\n', ' ')
+print("guineaTribe: " + str(np.round(maxEig(E),2)))

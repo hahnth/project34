@@ -1,7 +1,5 @@
 import numpy as np
 
-from calculateLambda import maxEig
-
 def fileToMatrix(path, lineSeperator, columnSeperator):
     """reads a matrix from a file into a nbarray
        lines in the file are seperated by lineSeperator
@@ -9,6 +7,8 @@ def fileToMatrix(path, lineSeperator, columnSeperator):
 
     sourceFile = open(path, "r")
     line = sourceFile.readline()
+
+    # TODO: Dokumentation
 
     # first line (File may not be empty!)
     if (line[len(line) - 1] == '\n'):
@@ -43,15 +43,5 @@ def fileToMatrix(path, lineSeperator, columnSeperator):
 
 
 def normalizeMatrix(A):
-    # TODO modify all weights to 1
+    # Alle Werte ungleich 0 auf 1 setzen
     return A
-
-
-A = fileToMatrix(".\data\simpleGraph.txt", ',', ',')
-print(np.round(maxEig(A),2))
-
-B = fileToMatrix(".\data\largeTree.txt", ',', ',')
-print(np.round(maxEig(B),2))
-
-C = fileToMatrix(".\data\cities.txt", ',', ',')
-print(np.round(maxEig(C),2))
