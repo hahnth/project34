@@ -42,6 +42,12 @@ def fileToMatrix(path, lineSeperator, columnSeperator):
     return A
 
 
-def normalizeMatrix(A):
-    # Alle Werte ungleich 0 auf 1 setzen
+def normalizeMatrix(A, threshold):
+    num = len(A)
+    for i in range(0,(num)):
+        for j in range(0,(num)):
+            if(np.abs(A[i,j]) > threshold):
+                A[i,j] = 1
+            else:
+                A[i,j] = 0
     return A
