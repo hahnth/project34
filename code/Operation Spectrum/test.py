@@ -1,27 +1,37 @@
 import numpy as np
+import scipy as sp
 import matplotlib.pyplot as plot
+import networkx as ntx
 
 from plotGraph import plotFromMatrix
+from fetchData import fileToMatrix, normalizeMatrix, fileToEdgelist, edgelistToMatrix
+from calculateLambda import obtainMaxEig, maxEig
 
-from fetchData import fileToMatrix, normalizeMatrix
-from calculateLambda import maxEig
 
 print("Largest eigenvalues:")
 
 A = fileToMatrix(".\data\simpleGraph.txt", ',', ',')
-print("simpleGraph: " + str(np.round(maxEig(A),2)))
+print("simpleGraph")
+obtainMaxEig(A, True, 2)
 
 B = fileToMatrix(".\data\largeTree.txt", ',', ',')
-print("largeTree: " + str(np.round(maxEig(normalizeMatrix(B,0)),2)))
+print("largeTree")
+obtainMaxEig(B, True, 2)
 
 C = fileToMatrix(".\data\cities.txt", ',', ',')
-print("cities: " + str(np.round(maxEig(normalizeMatrix(C,0)),2)))
+print("cities")
+obtainMaxEig(C, True, 2)
 
 D = fileToMatrix(".\data\windsurfers.txt", '\n', ' ')
-print("windsurfers: " + str(np.round(maxEig(normalizeMatrix(D,0.5)),2))) # arbitrary threshold
+print("windsurfers")
+obtainMaxEig(D, True, 2)
 
 E = fileToMatrix(".\data\guineaTribe.txt", '\n', ' ')
-print("guineaTribe: " + str(np.round(maxEig(E),2)))
+print("guineaTribe")
+obtainMaxEig(E, True, 2)
 
-plotFromMatrix(E)
-plot.show()
+plotFromMatrix(B)
+
+#Warning: Large file, takes up to 3 minutes
+edges = fileToEdgelist(".\data\edges.csv", ',')
+print(maxEig(edgelistToMatrix(edges)))
