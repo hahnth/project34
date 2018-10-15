@@ -1,37 +1,34 @@
-import numpy as np
-import scipy as sp
-import matplotlib.pyplot as plot
-import networkx as ntx
-
-from plotGraph import plotFromMatrix
-from fetchData import fileToMatrix, normalizeMatrix, fileToEdgelist, edgelistToMatrix
-from calculateLambda import obtainMaxEig, maxEig
+from plotGraph import plotFromMatrix, plotFromGraph
+from fetchData import importMatrixFile, normalizeMatrix, importEdgeListFile
+from calculateLambda import obtainMaxEig
 
 
 print("Largest eigenvalues:")
 
-A = fileToMatrix(".\data\simpleGraph.txt", ',', ',')
+A = importMatrixFile(".\data\simpleGraph.txt", ',', ',')
 print("simpleGraph")
 obtainMaxEig(A, True, 2)
 
-B = fileToMatrix(".\data\largeTree.txt", ',', ',')
+B = importMatrixFile(".\data\largeTree.txt", ',', ',')
 print("largeTree")
 obtainMaxEig(B, True, 2)
 
-C = fileToMatrix(".\data\cities.txt", ',', ',')
+C = importMatrixFile(".\data\cities.txt", ',', ',')
 print("cities")
 obtainMaxEig(C, True, 2)
 
-D = fileToMatrix(".\data\windsurfers.txt", '\n', ' ')
+D = importMatrixFile(".\data\windsurfers.txt", '\n', ' ')
 print("windsurfers")
 obtainMaxEig(D, True, 2)
 
-E = fileToMatrix(".\data\guineaTribe.txt", '\n', ' ')
+E = importMatrixFile(".\data\guineaTribe.txt", '\n', ' ')
 print("guineaTribe")
 obtainMaxEig(E, True, 2)
 
-plotFromMatrix(B)
+#TODO: Warnung beim plotten behandeln
+plotFromGraph(B)
 
-#Warning: Large file, takes up to 3 minutes
-edges = fileToEdgelist(".\data\edges.csv", ',')
-print(maxEig(edgelistToMatrix(edges)))
+#Warning: Large file, takes up to 2 minutes
+#F = importEdgeListFile(".\data\hyves\edges.csv", ',')
+print("hyves")
+#obtainMaxEig(F, True, 3)

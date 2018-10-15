@@ -1,20 +1,19 @@
 import numpy as np
 import scipy as sp
+import networkx as ntx
 import sys
 
 
-CONST_TOLERANCE = 1e-6 # Defines tolerance for comparisons, only modify here
-
-
-def maxEig(A): # TODO Exceptions behandeln
+def maxEig(A):
     """Returns the largest eigenvalue of a symmetric matrix"""
-    eigenVals = sp.sparse.linalg.eigsh(sp.sparse.csr_matrix.asfptype(A), k=1, return_eigenvectors=False)
+    eigenVals = sp.sparse.linalg.eigsh(sp.sparse.csr_matrix.asfptype(A), k=1, return_eigenvectors=False, which='LM')
     return eigenVals[0]
 
 
-def obtainMaxEig(A, out, digits):
-    """Exception handling for maxEig(A)
+def obtainMaxEig(G, out, digits):
+    """Returns the largest eigenvalue (absolute value) of the adjacency matrix belonging to the graph G
        if out is True, the result of maxEig is printed with precision digits"""
+    A = ntx.adjacency_matrix(G)
     try:
         ret = maxEig(A)
     except np.linalg.LinAlgError:
