@@ -1,17 +1,19 @@
 import numpy as np
 import networkx as ntx
 
-def importMatrixFile(path, lineSeparator, columnSeparator): # TODO: Exceptions (float(i))
+# TODO typing?
+
+def importMatrixFile(path, lineSeparator, columnSeparator): # TODO: Exceptions behandeln(float(i))
     """reads a matrix from a file into a nbarray an returns the according graph
+       file may not be empty
+       each row has to contain the same number of elements
        lines in the file are separated by lineSeparator
        columns are separated by columnSeparator"""
 
     sourceFile = open(path, "r")
+    # first line to create a matrix TODO eleganterer Weg?
     line = sourceFile.readline()
-
-    # TODO: Kommentare, Spaghetti-Code?
-
-    # first line (File may not be empty!)
+    # Excludes special characters from imported string (typical cases considered)
     if line[len(line) - 1] == '\n':
         line = line[:len(line) - 1]
     if line[len(line) - 1] == ' ':
@@ -21,6 +23,7 @@ def importMatrixFile(path, lineSeparator, columnSeparator): # TODO: Exceptions (
     if line[len(line) - 1] == ' ':
         line = line[:len(line) - 1]
     lineElements = line.split(columnSeparator)
+    # Float array necessary for matrix operations
     lineElements = [float(i) for i in lineElements]
     A = np.array(lineElements, dtype=float)
 
@@ -38,12 +41,15 @@ def importMatrixFile(path, lineSeparator, columnSeparator): # TODO: Exceptions (
             line = line[:len(line) - 1]
         lineElements = line.split(columnSeparator)
         lineElements = [float(i) for i in lineElements]
+        # Adds row to existing matrix, assuming same number of elements
         A = np.vstack([A, lineElements])
+
     sourceFile.close()
+    # Converts matrix into networkX graph object
     return ntx.from_numpy_array(A)
 
 
-def importEdgeListFile(path, elementSeparator): #TODO Exceptions (int(i))
+def importEdgeListFile(path, elementSeparator): #TODO Exceptions behandeln (int(i))
     """reads a graph from a file containing all edges
        inside a line the two nodes connected by the edge a separated by the elementSeparator"""
     sourceFile = open(path, "r")
@@ -52,8 +58,10 @@ def importEdgeListFile(path, elementSeparator): #TODO Exceptions (int(i))
         line = sourceFile.readline()
         if line == '' or line == '\n':
             break
+        # Edgelist expects integer values
         edgelist.append(tuple([int(i) for i in line.split(elementSeparator)]))
     sourceFile.close()
+    #Converts edgelist to networkx graph object
     return ntx.from_edgelist(edgelist)
 
 

@@ -25,7 +25,6 @@ E = importMatrixFile(".\data\guineaTribe.txt", '\n', ' ')
 print("guineaTribe")
 obtainMaxEig(E, True, 2)
 
-#TODO: Warnung beim plotten behandeln
 plotFromGraph(B)
 
 #Warning: Large file, takes up to 2 minutes
