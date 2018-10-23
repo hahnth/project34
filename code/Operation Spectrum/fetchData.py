@@ -23,7 +23,7 @@ def importMatrixFile(path, lineSeparator, columnSeparator): # TODO: Exceptions b
     if line[len(line) - 1] == ' ':
         line = line[:len(line) - 1]
     lineElements = line.split(columnSeparator)
-    # Float array necessary for matrix operations
+    # Float array to deal with weighted graphs
     lineElements = [float(i) for i in lineElements]
     A = np.array(lineElements, dtype=float)
 
@@ -58,7 +58,7 @@ def importEdgeListFile(path, elementSeparator): #TODO Exceptions behandeln (int(
         line = sourceFile.readline()
         if line == '' or line == '\n':
             break
-        # Edgelist expects integer values
+        # Edgelist expects integer values (discrete values of nodes)
         edgelist.append(tuple([int(i) for i in line.split(elementSeparator)]))
     sourceFile.close()
     #Converts edgelist to networkx graph object

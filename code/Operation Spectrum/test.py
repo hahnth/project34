@@ -25,7 +25,11 @@ E = importMatrixFile(".\data\guineaTribe.txt", '\n', ' ')
 print("guineaTribe")
 obtainMaxEig(E, True, 2)
 
-plotFromGraph(B)
+F = importEdgeListFile('.\data\\terrorist.txt', '\t')
+print("terrorist")
+obtainMaxEig(F, True, 2)
+
+plotFromGraph(C)
 
 #Warning: Large file, takes up to 2 minutes
 #F = importEdgeListFile(".\data\hyves\edges.csv", ',')
