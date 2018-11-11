@@ -7,7 +7,10 @@ def plotFromMatrix(A):
     plotFromGraph(graph)
 
 
-def plotFromGraph(G):
-    ntx.draw_networkx(G)
+def plotFromGraph(G): # TODO: dok (counter erklären)
     # TODO schönere Plots
-    plot.draw()
+    plot.figure(plotFromGraph.counter)
+    ntx.draw_networkx(G)
+    plotFromGraph.counter += 1
+
+

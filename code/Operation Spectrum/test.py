@@ -8,8 +8,10 @@ warnings.filterwarnings("ignore",category=matplotlib.cbook.mplDeprecation)
 
 from plotGraph import plotFromGraph
 from fetchData import importMatrixFile, normalizeMatrix, importEdgeListFile, normalizeGraph
-from calculateLambda import obtainMaxEig
+from calculateLambda import obtainMaxEig, removeCriticalNode
 
+#initializes the plot counter
+plotFromGraph.counter = 1
 
 print("Largest eigenvalues:")
 
@@ -43,12 +45,13 @@ F = normalizeGraph(F, 0.5)
 print("terrorist")
 obtainMaxEig(F, True, 2)
 
-plotFromGraph(B)
+plotFromGraph(F)
+X = removeCriticalNode(F)
 
 # Warning: Large file, takes up to 2 minutes
 #G = importEdgeListFile(".\data\hyves\edges.csv", ',')
 #print("hyves")
-#obtainMaxEig(F, True, 3)
+#obtainMaxEig(G, True, 3)
 
-#necessary to avoid blocking of the script execution
+#necessary to avoid blocking of the script execution, plots are displayed when script is done
 plot.show()

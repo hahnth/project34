@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="598f0077-6ca6-4072-8f50-2ee04fdccc26" name="Default" comment="new dataset added">
+      <change afterPath="$PROJECT_DIR$/todo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fetchData.py" beforeDir="false" afterPath="$PROJECT_DIR$/fetchData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculateLambda.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculateLambda.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plotGraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotGraph.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../other/Epicdemics_Final_Report.pdf" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +18,7 @@
     <session id="-1325758394">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.15" value="2" />
@@ -33,26 +33,28 @@
         <counts>
           <entry key="Python Console" value="51" />
           <entry key="dummy" value="35" />
-          <entry key="py" value="3234" />
+          <entry key="py" value="4871" />
+          <entry key="todo" value="9" />
           <entry key="txt" value="79" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="114" />
-          <entry key="Python" value="3285" />
+          <entry key="PLAIN_TEXT" value="123" />
+          <entry key="Python" value="4922" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="17" />
-          <entry key="txt" value="8" />
+          <entry key="py" value="24" />
+          <entry key="todo" value="1" />
+          <entry key="txt" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="8" />
-          <entry key="Python" value="17" />
+          <entry key="PLAIN_TEXT" value="11" />
+          <entry key="Python" value="24" />
         </counts>
       </usages-collector>
     </session>
@@ -60,23 +62,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fetchData.py">
+        <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="104" column="43" selection-start-line="104" selection-start-column="43" selection-end-line="104" selection-end-column="43" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <marker date="1541960449261" expanded="true" signature="3832:3837" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/plotGraph.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+            <state relative-caret-position="201">
+              <caret line="55" column="6" selection-start-line="55" selection-start-column="6" selection-end-line="55" selection-end-column="6" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -85,12 +74,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
+        <entry file="file://$PROJECT_DIR$/plotGraph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+            <state relative-caret-position="101">
+              <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/todo.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="81" lean-forward="true" selection-start-line="9" selection-start-column="81" selection-end-line="9" selection-end-column="81" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/calculateLambda.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="880">
+              <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+                <marker date="1541964980557" expanded="true" signature="943:948" ph="..." />
               </folding>
             </state>
           </provider>
@@ -127,11 +138,13 @@
         <option value="$PROJECT_DIR$/data/windsurfers.txt" />
         <option value="$PROJECT_DIR$/data/guineaTribe" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/networkx/drawing/nx_pylab.py" />
-        <option value="$PROJECT_DIR$/calculateLambda.py" />
         <option value="$PROJECT_DIR$/data/terrorist.txt" />
-        <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/plotGraph.py" />
         <option value="$PROJECT_DIR$/fetchData.py" />
+        <option value="$PROJECT_DIR$/data/todo" />
+        <option value="$PROJECT_DIR$/calculateLambda.py" />
+        <option value="$PROJECT_DIR$/plotGraph.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/todo.py" />
       </list>
     </option>
   </component>
@@ -169,11 +182,12 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Severin\Code\project34\code\Operation Spectrum\data\hyves" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Severin\Code\project34\code\Operation Spectrum\data" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Severin\Code\project34\code\Operation Spectrum" />
+      <recent name="C:\Users\Severin\Code\project34\code\Operation Spectrum\data\hyves" />
       <recent name="C:\Users\Severin\Code\project34\code\Operation Spectrum\data" />
     </key>
   </component>
@@ -380,11 +394,11 @@
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.32823366" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32880434" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.29346314" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.42698193" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="10" visible="true" weight="0.32823366" />
+      <window_info anchor="bottom" id="TODO" order="10" weight="0.32823366" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -469,9 +483,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data/simpleGraphWeighted.txt" />
     <entry file="file://$PROJECT_DIR$/data/guineaTribe" />
-    <entry file="file://$PROJECT_DIR$/data/guineaTribe.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/edges.csv" />
     <entry file="file://$PROJECT_DIR$/data/hyves/readme.txt">
       <provider selected="true" editor-type-id="text-editor" />
@@ -511,32 +522,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/windsurfers.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calculateLambda.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-494" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fetchData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="104" column="43" selection-start-line="104" selection-start-column="43" selection-end-line="104" selection-end-column="43" />
+        <state relative-caret-position="977">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <marker date="1541960449261" expanded="true" signature="3832:3837" ph="..." />
@@ -544,13 +537,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/guineaTribe.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calculateLambda.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1541964980557" expanded="true" signature="943:948" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/plotGraph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        <state relative-caret-position="101">
+          <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="55" column="6" selection-start-line="55" selection-start-column="6" selection-end-line="55" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="81" lean-forward="true" selection-start-line="9" selection-start-column="81" selection-end-line="9" selection-end-column="81" />
         </state>
       </provider>
     </entry>
