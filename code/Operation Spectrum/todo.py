@@ -10,7 +10,7 @@
             # TODO: critical size of graphs to compensate loss of one node without falling apart
 
 # Source code
-
+    # TODO: Implement NVM (s. paper) to compare graphs of different size (OR make all graphs the same size)
 
 # Documentation
     # TODO: complete README in repo

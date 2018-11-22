@@ -9,7 +9,7 @@ def maxEig(A):
     """Returns the largest eigenvalue of a symmetric matrix"""
     # TODO: Zitat paper: "Largest eigenvalue" -> Betrag?
     eigenVals = sp.sparse.linalg.eigsh(sp.sparse.csr_matrix.asfptype(A), k=1, return_eigenvectors=False, which='LM')
-    return eigenVals[0]
+    return abs(eigenVals[0])
 
 
 def obtainMaxEig(G, out, digits):
@@ -24,6 +24,14 @@ def obtainMaxEig(G, out, digits):
     if out:
         print(np.round(ret, digits))
     return ret
+
+
+def obtainNVM(G, out, digits): # TODO: Dok
+    ret = obtainMaxEig(G, False, 0)/(len(G.nodes)-1)
+    if out:
+        print(np.round(ret, digits))
+    return ret
+
 
 def removeCriticalNode(G): # TODO: Dokumentation, testen
     nodeToRemove = 0
