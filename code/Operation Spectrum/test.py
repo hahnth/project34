@@ -74,10 +74,10 @@ plotFromGraph(F)
 X = removeCriticalNode(F)
 
 # Warning: Large file, takes up to 2 minutes
-G = importEdgeListFile(".\data\hyves\edges.csv", ',')
+#G = importEdgeListFile(".\data\hyves\edges.csv", ',')
 print("hyves")
-obtainMaxEig(G, True, 3)
-obtainNVM(G, True, 4)
+#obtainMaxEig(G, True, 3)
+#obtainNVM(G, True, 4)
 
 #necessary to avoid blocking of the script execution, plots are displayed when script is done
 plot.show()
