@@ -16,7 +16,6 @@ plotFromGraph.counter = 1
 print("Largest eigenvalues:")
 
 A = importMatrixFile(".\data\simpleGraph.txt", ',', ',')
-A = normalizeGraph(A, 0.5)
 print("simpleGraph")
 obtainMaxEig(A, True, 2)
 obtainNVM(A, True, 4)
@@ -33,7 +32,7 @@ print("cities")
 obtainMaxEig(C, True, 2)
 obtainNVM(C, True, 4)
 
-plotFromGraph(C)
+#plotFromGraph(C)
 
 D = importMatrixFile(".\data\windsurfers.txt", '\n', ' ')
 D = normalizeGraph(D, 0.35)
@@ -43,13 +42,9 @@ obtainNVM(D, True, 4)
 
 E = importMatrixFile(".\data\guineaTribe.txt", '\n', ' ')
 E = normalizeGraph(E, 0.5)
-print("guineaTribe")
+print("guinea tribe")
 obtainMaxEig(E, True, 2)
 obtainNVM(E, True, 4)
-
-#F = importEdgeListFile('.\data\\terrorist.txt', '\t')
-#print("terrorist")
-#obtainMaxEig(F, True, 2)
 
 G = importEdgeListFile(".\data\\asgraph\\asgraph.txt", ':')
 print('Oregon-AS graph')
@@ -57,25 +52,32 @@ print('Oregon-AS graph')
 #plotFromGraph(G)
 obtainMaxEig(G, True, 3)
 obtainNVM(G, True, 4)
-
-
-#Warning: Large file, takes up to 2 minutes
-#H = importEdgeListFile(".\data\hyves\edges.csv", ',')
-#print("hyves")
-#obtainMaxEig(H, True, 3)
+G1 = removeCriticalNode(G)
+print('Oregon-AS graph vaccinated')
+obtainMaxEig(G1, True, 3)
 
 F = importEdgeListFile('.\data\\terrorist.txt', '\t')
-F = normalizeGraph(F, 0.5)
 print("terrorist")
+#F = normalizeGraph(F, 0.5)
 obtainMaxEig(F, True, 2)
 obtainNVM(F, True, 4)
-
 plotFromGraph(F)
+
 X = removeCriticalNode(F)
+print("terrorist vaccinated")
+obtainMaxEig(X, True, 2)
+obtainNVM(X, True, 4)
+plotFromGraph(X)
+
+X2 = removeCriticalNode(X)
+print("terrorist twice vaccinated")
+obtainMaxEig(X2, True, 2)
+obtainNVM(X2, True, 4)
+plotFromGraph(X2)
 
 # Warning: Large file, takes up to 2 minutes
 #G = importEdgeListFile(".\data\hyves\edges.csv", ',')
-print("hyves")
+#print("hyves")
 #obtainMaxEig(G, True, 3)
 #obtainNVM(G, True, 4)
 
