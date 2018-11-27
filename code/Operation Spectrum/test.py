@@ -52,9 +52,11 @@ print('Oregon-AS graph')
 #plotFromGraph(G)
 obtainMaxEig(G, True, 3)
 obtainNVM(G, True, 4)
-G1 = removeCriticalNode(G)
-print('Oregon-AS graph vaccinated')
-obtainMaxEig(G1, True, 3)
+
+# TODO: s.removeCriticalNode
+# G1 = removeCriticalNode(G)
+# print('Oregon-AS graph vaccinated')
+# obtainMaxEig(G1, True, 3)
 
 F = importEdgeListFile('.\data\\terrorist.txt', '\t')
 print("terrorist")
