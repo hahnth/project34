@@ -7,6 +7,7 @@ Created on Fri Nov 30 11:16:51 2018
 
 import networkx as nx
 import EoN
+import random
 import scipy
 import matplotlib.pyplot as plt
 from fetchData import importEdgeListFile
@@ -15,10 +16,11 @@ from calculateLambda import obtainMaxEig
 '''
 source for 'as20000102.txt': https://snap.stanford.edu/data/as-733.html
 '''
+
 E = importEdgeListFile("data/asgraph/as20000102.txt", '\t')
-G = nx.Graph(E)
 eig = obtainMaxEig(E, False, 2)
 print("Eigenvalue of the Adjacency-Matrix = " + str(round(eig, 2)))
+
 
 def s_SIR(eig, beta, delta, digits):
     return round(eig*beta/delta, digits)
@@ -30,12 +32,14 @@ def time_evolution_SIR(E, beta, delta, initial_size,
     Isum = scipy.zeros(len(report_times))
     Rsum = scipy.zeros(len(report_times))
     for i in range(iterations):
-        #TODO: initial_infecteds anpassen
-        t, S, I, R = EoN.fast_SIR(G, beta, delta, initial_infecteds = range(initial_size))
+        # Selecting initial nodes randomly
+	initial_nodes = random.sample(G.nodes, initial_size)        
+	t, S, I, R = EoN.fast_SIR(G, beta, delta, initial_infecteds = initial_nodes)
         _, newI, newR= EoN.subsample(report_times, t, S, I, R)
         #plt.plot(report_times, newI, linewidth=1, alpha = 0.4)
         Isum += newI
-        Rsum += newR
+	Rsum += newR
+    #Average value of all iterations        
     I_average = Isum / float(iterations)
     R_average = Rsum / float(iterations)
     if (opt == 'Plot'):
@@ -43,9 +47,10 @@ def time_evolution_SIR(E, beta, delta, initial_size,
     if (opt == 'number_of_cured_nodes'):
         return R_average[-1]
         
-def fig_5_left():
+
+def fig_5_left(G):
     digits = 2
-    initial_size = int(float(len(E))/(10**(2)))
+    initial_size = int(float(len(G))/(10**(2)))
     iterations = 10
     start_time = 0
     end_time = 100
@@ -56,13 +61,13 @@ def fig_5_left():
     label3 = r'under-1, $\beta$ = '+ str(beta3)+', $\delta = $' + str(delta3)+ ', s = ' + str(s_SIR(eig, beta3, delta3, digits))
     label4 = r'under-2, $\beta$ = '+ str(beta4)+', $\delta = $' + str(delta4)+ ', s = ' + str(s_SIR(eig, beta4, delta4, digits))
     
-    time_evolution_SIR(E, beta1, delta1, initial_size, start_time, end_time, 
+    time_evolution_SIR(G, beta1, delta1, initial_size, start_time, end_time,
                        iterations, label1)
-    time_evolution_SIR(E, beta2, delta2, initial_size, start_time, end_time, 
+    time_evolution_SIR(G, beta2, delta2, initial_size, start_time, end_time,
                        iterations, label2)
-    time_evolution_SIR(E, beta3, delta3, initial_size, start_time, end_time, 
+    time_evolution_SIR(G, beta3, delta3, initial_size, start_time, end_time,
                        iterations, label3)
-    time_evolution_SIR(E, beta4, delta4, initial_size, start_time, end_time, 
+    time_evolution_SIR(G, beta4, delta4, initial_size, start_time, end_time,
                        iterations, label4)
     plt.legend()
     plt.xlabel("Time ticks")
@@ -95,7 +100,7 @@ def fig_5_right():
 
 
 if __name__ == "__main__":
-    #ig_5_left()
+    fig_5_left()
     fig_5_right()
 
 
