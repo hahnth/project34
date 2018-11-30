@@ -81,12 +81,12 @@ def fig_5_left(G):
 
 def fig_5_right(G):
     initial_size = 10 # int(float(len(G))/(10**(2)))
-    iterations = 10
+    iterations = 100
     start_time = 0
     end_time = 10
     delta = eig
-    number_of_steps = 100
-    beta_range = scipy.linspace(10**(-2), 10**2, number_of_steps)
+    number_of_steps = 20
+    beta_range = scipy.logspace(-2,2, number_of_steps)
     final_number_of_cured_nodes = scipy.zeros_like(beta_range)
     for i, beta  in enumerate(beta_range):
         final_number_of_cured_nodes[i] = time_evolution_SIR(G, beta, delta, initial_size, start_time, end_time, iterations, "Hi", opt = 'number_of_cured_nodes')
@@ -102,7 +102,7 @@ def fig_5_right(G):
 
 
 if __name__ == "__main__":
-    fig_5_left(E)
+    #fig_5_left(E)
     fig_5_right(E)
 
 
