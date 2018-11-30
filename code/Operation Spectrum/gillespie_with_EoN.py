@@ -18,10 +18,10 @@ source for 'as20000102.txt': https://snap.stanford.edu/data/as-733.html
 '''
 
 E = importEdgeListFile("data/asgraph/as20000102.txt", '\t')
+# E = importEdgeListFile("data/asgraph/peer_oregon_010331.txt", ':')
 eig = obtainMaxEig(E, False, 2)
-G = nx.Graph(E)
+print(str(len(E.nodes)) + " nodes")
 print("Eigenvalue of the Adjacency-Matrix = " + str(round(eig, 2)))
-
 
 def s_SIR(eig, beta, delta, digits):
     return round(eig*beta/delta, digits)
@@ -34,7 +34,7 @@ def time_evolution_SIR(G, beta, delta, initial_size,
     Rsum = scipy.zeros(len(report_times))
     for i in range(iterations):
         # Selecting initial nodes randomly
-        initial_nodes = random.sample(G.nodes, initial_size)        
+        initial_nodes = random.sample(G.nodes, initial_size)
         t, S, I, R = EoN.fast_SIR(G, beta, delta, initial_infecteds = initial_nodes)
         _, newI, newR= EoN.subsample(report_times, t, S, I, R)
         #plt.plot(report_times, newI, linewidth=1, alpha = 0.4)
@@ -54,9 +54,9 @@ def fig_5_left(G):
     initial_size = int(float(len(G))/(10**(2)))
     iterations = 10
     start_time = 0
-    end_time = 100
-    beta1, beta2, beta3, beta4 = 0.5, 0.05,0.01,0.001 
-    delta1, delta2, delta3, delta4 = 0.2, 0.2,1,0.2
+    end_time = 99
+    beta1, beta2, beta3, beta4 = 0.15, 0.05, 0.02, 0.01
+    delta1, delta2, delta3, delta4 = 1, 1, 1, 1
     label1 = r'over-1, $\beta$ = '+ str(beta1)+', $\delta$ = ' + str(delta1) + ', s = ' + str(s_SIR(eig, beta1, delta1, digits))
     label2 = r'over-2, $\beta$ = '+ str(beta2)+', $\delta = $' + str(delta2)+ ', s = ' + str(s_SIR(eig, beta2, delta2, digits))
     label3 = r'under-1, $\beta$ = '+ str(beta3)+', $\delta = $' + str(delta3)+ ', s = ' + str(s_SIR(eig, beta3, delta3, digits))
@@ -76,8 +76,8 @@ def fig_5_left(G):
     plt.grid()
     plt.savefig('fig_5_left.png')
     plt.show()
-    
-    
+
+
 def fig_5_right():
     initial_size = int(float(len(E))/(10**(2)))
     iterations = 10
@@ -96,12 +96,12 @@ def fig_5_right():
     plt.grid()
     plt.savefig('fig_5_right.png')
     plt.show()
-    
+
 
 
 
 if __name__ == "__main__":
-    fig_5_left(G)
+    fig_5_left(E)
     fig_5_right()
 
 
