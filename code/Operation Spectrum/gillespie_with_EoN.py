@@ -82,7 +82,7 @@ def fig_5_left(G, initial_size, iterations):
     plt.xlabel("Time ticks")
     plt.ylabel("Fraction of Infected People")
     plt.grid()
-    plt.savefig('./images/fig_5_left.png')
+    plt.savefig('build/fig_5_left.png')
     plt.show()
 
 
@@ -90,8 +90,8 @@ def fig_5_right(G, initial_size, iterations):
     start_time = 0
     end_time = 10
     delta = eig
-    number_of_steps = 100
-    beta_range = scipy.linspace(10**(-2), 10**2, number_of_steps)
+    number_of_steps = 20
+    beta_range = scipy.logspace(-2,2, number_of_steps)
     final_number_of_cured_nodes = scipy.zeros_like(beta_range)
     for i, beta  in enumerate(beta_range):
         final_number_of_cured_nodes[i] = time_evolution_SIR(G, beta, delta, initial_size, start_time, end_time, iterations, "Hi", opt = 'number_of_cured_nodes')
@@ -100,7 +100,7 @@ def fig_5_right(G, initial_size, iterations):
     plt.xlabel(r'Effective Strength of Virus $\lambda_1\beta/\delta$')
     plt.ylabel("Final Number of Cured Nodes")
     plt.grid()
-    plt.savefig('./images/fig_5_right.png')
+    plt.savefig('build/fig_5_right.png')
     plt.show()
 
 def fig_5_right_initial(G, initial_sizes, iterations):
@@ -125,4 +125,4 @@ def fig_5_right_initial(G, initial_sizes, iterations):
 if __name__ == "__main__":
     #fig_5_left(E, initial_size, iterations)
     #fig_5_right(E, initial_size, iterations)
-    fig_5_right_initial(E, initial_sizes, iterations)
+    #fig_5_right_initial(E, initial_sizes, iterations)
