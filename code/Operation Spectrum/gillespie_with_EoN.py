@@ -25,18 +25,23 @@ def s_SIR(eig, beta, delta, digits):
 
 
 def time_evolution_SIR(E, beta, delta, initial_size,
-                       start_time, end_time, iterations, label):
+                       start_time, end_time, iterations, label, opt = 'Plot'):
     report_times = scipy.linspace(start_time,end_time,1000)
     Isum = scipy.zeros(len(report_times))
+    Rsum = scipy.zeros(len(report_times))
     for i in range(iterations):
         #TODO: initial_infecteds anpassen
-        t, _, I, _ = EoN.fast_SIR(G, beta, delta, initial_infecteds = range(initial_size))
-        newI= EoN.subsample(report_times, t, I)
+        t, S, I, R = EoN.fast_SIR(G, beta, delta, initial_infecteds = range(initial_size))
+        _, newI, newR= EoN.subsample(report_times, t, S, I, R)
         #plt.plot(report_times, newI, linewidth=1, alpha = 0.4)
         Isum += newI
+        Rsum += newR
     I_average = Isum / float(iterations)
-    plt.loglog(report_times, I_average/(len(E)), label = label, linewidth = 5)
-        
+    R_average = Rsum / float(iterations)
+    if (opt == 'Plot'):
+        plt.loglog(report_times, I_average/(len(E)), label = label, linewidth = 5)
+    if (opt == 'number_of_cured_nodes'):
+        return R_average[-1]
         
 def fig_5_left():
     digits = 2
@@ -63,11 +68,34 @@ def fig_5_left():
     plt.xlabel("Time ticks")
     plt.ylabel("Fraction of Infected People")
     plt.grid()
+    plt.savefig('fig_5_left.png')
     plt.show()
+    
+    
+def fig_5_right():
+    initial_size = int(float(len(E))/(10**(2)))
+    iterations = 100
+    start_time = 0
+    end_time = 10
+    delta = eig
+    number_of_steps = 100
+    beta_range = scipy.linspace(10**(-2), 10**2, number_of_steps)
+    final_number_of_cured_nodes = scipy.zeros_like(beta_range)
+    for i, beta  in enumerate(beta_range):
+        final_number_of_cured_nodes[i] = time_evolution_SIR(E, beta, delta, initial_size, start_time, end_time, iterations, "Hi", opt = 'number_of_cured_nodes')
+    plt.semilogx(beta_range, final_number_of_cured_nodes)
+    plt.grid()
+    plt.xlabel(r'Effective Strength of Virus $\lambda_1\beta/\delta$')
+    plt.ylabel("Final Number of Cured Nodes")
+    plt.grid()
+    plt.savefig('fig_5_right.png')
+    plt.show()
+    
 
 
 
 if __name__ == "__main__":
-    fig_5_left()
+    #ig_5_left()
+    fig_5_right()
 
 
