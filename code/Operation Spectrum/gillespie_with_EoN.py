@@ -40,7 +40,7 @@ def time_evolution_SIR(G, beta, delta, initial_size,
         _, newI, newR= EoN.subsample(report_times, t, S, I, R)
         #plt.plot(report_times, newI, linewidth=1, alpha = 0.4)
         Isum += newI
-    Rsum += newR
+        Rsum += newR
     # Average value of all iterations
     I_average = Isum / float(iterations)
     R_average = Rsum / float(iterations)
@@ -53,7 +53,7 @@ def time_evolution_SIR(G, beta, delta, initial_size,
 def fig_5_left(G):
     digits = 2
     initial_size = 10# int(float(len(G))/(10**(2)))
-    iterations = 100
+    iterations = 10
     start_time = 0
     end_time = 99
     beta1, beta2, beta3, beta4 = 0.15, 0.05, 0.02, 0.01
