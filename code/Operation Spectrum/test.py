@@ -14,6 +14,9 @@ plotFromGraph.counter = 1
 
 print("Largest eigenvalues:")
 
+a = importEdgeListFile("data/asgraph/peer_oregon_010331.txt", ':')
+obtainMaxEig(a, True, 2)
+
 A = importMatrixFile(".\data\simpleGraph.txt", ',', ',')
 print("simpleGraph")
 obtainMaxEig(A, True, 2)
