@@ -15,6 +15,7 @@ from calculateLambda import obtainMaxEig
 
 '''
 source for 'as20000102.txt': https://snap.stanford.edu/data/as-733.html
+source for 'peer_oregon_010331.txt': http://topology.eecs.umich.edu/data.html, file peer.oregon.010331
 '''
 
 E = importEdgeListFile("data/asgraph/as20000102.txt", '\t')
@@ -40,7 +41,7 @@ def time_evolution_SIR(G, beta, delta, initial_size,
         #plt.plot(report_times, newI, linewidth=1, alpha = 0.4)
         Isum += newI
     Rsum += newR
-    #Average value of all iterations
+    # Average value of all iterations
     I_average = Isum / float(iterations)
     R_average = Rsum / float(iterations)
     if (opt == 'Plot'):
@@ -78,9 +79,9 @@ def fig_5_left(G):
     plt.show()
 
 
-def fig_5_right():
-    initial_size = int(float(len(E))/(10**(2)))
-    iterations = 100
+def fig_5_right(G):
+    initial_size = 10 # int(float(len(G))/(10**(2)))
+    iterations = 10
     start_time = 0
     end_time = 10
     delta = eig
@@ -88,7 +89,7 @@ def fig_5_right():
     beta_range = scipy.linspace(10**(-2), 10**2, number_of_steps)
     final_number_of_cured_nodes = scipy.zeros_like(beta_range)
     for i, beta  in enumerate(beta_range):
-        final_number_of_cured_nodes[i] = time_evolution_SIR(E, beta, delta, initial_size, start_time, end_time, iterations, "Hi", opt = 'number_of_cured_nodes')
+        final_number_of_cured_nodes[i] = time_evolution_SIR(G, beta, delta, initial_size, start_time, end_time, iterations, "Hi", opt = 'number_of_cured_nodes')
     plt.semilogx(beta_range, final_number_of_cured_nodes)
     plt.grid()
     plt.xlabel(r'Effective Strength of Virus $\lambda_1\beta/\delta$')
@@ -102,6 +103,6 @@ def fig_5_right():
 
 if __name__ == "__main__":
     fig_5_left(E)
-    fig_5_right()
+    fig_5_right(E)
 
 
