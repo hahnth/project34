@@ -6,8 +6,7 @@ import sys
 
 
 def maxEig(A):
-    """Returns the largest eigenvalue of a symmetric matrix"""
-    # TODO: Zitat paper: "Largest eigenvalue" -> Betrag?
+    """Returns the largest eigenvalue (absolute value) of a symmetric matrix"""
     eigenVals = sp.sparse.linalg.eigsh(sp.sparse.csr_matrix.asfptype(A), k=1, return_eigenvectors=False, which='LM')
     return abs(eigenVals[0])
 
@@ -26,27 +25,36 @@ def obtainMaxEig(G, out, digits):
     return ret
 
 
-def obtainNVM(G, out, digits): # TODO: Dok
+def obtainNVM(G, out, digits):
+    """Returns the NVM metric of the graph G
+        if out is True, the result is printed with precision digits"""
     ret = obtainMaxEig(G, False, 0)/(len(G.nodes)-1)
     if out:
         print(np.round(ret, digits))
     return ret
 
 
-def removeCriticalNode(G): # TODO: Dokumentation, testen
-    nodeToRemove = 0
+def removeCriticalNode(G):
+    ret = G
+    """Finds the node, which contributes to the largest eigenvalue the most, an deletes is from G. Therefore,
+        the returned graph has the lowest possible largest eigenvalue after removing one node."""
+    nodeToRemove = 1
     minEig = obtainMaxEig(G, False, 0)
-    for i in range (0, len(G.nodes)):
+    # WARNING: The index starts at 0, because in edgelists the first node tends to have the index 1. Nevertheless, some graphs might
+    # also have a node 0, which is NOT CONSIDERED in this function!
+
+    #TODO: Iterator über nodes statt mit indizes ist robuster
+    for i in range(1, len(G.nodes)):
         newG = copy.deepcopy(G)
         newG.remove_node(i)
-        #print(newG.nodes)
-        #print("\n\n")
         currentEig = obtainMaxEig(newG, False, 0)
         if(currentEig == 0):
             print("Eigenvalue computation for node " + str(i) + " not successful!", file=sys.stderr)
         if(currentEig < minEig):
             nodeToRemove = i
             minEig = currentEig
-    #print("removed " + str(nodeToRemove))
-    G.remove_node(nodeToRemove)
-    return G
+    ret.remove_node(nodeToRemove)
+    # Workaround to enable multiple vaccination
+    matrix = ntx.adj_matrix(ret)
+    ret = ntx.from_scipy_sparse_matrix(matrix)
+    return ret

@@ -12,7 +12,6 @@ def importMatrixFile(path, lineSeparator, columnSeparator):
 
     sourceFile = open(path, "r")
     # first line to create a matrix
-    # TODO eleganterer Weg?
     line = sourceFile.readline()
     # Excludes special characters from imported string (typical cases considered)
     if line[len(line) - 1] == '\n':
