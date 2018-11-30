@@ -74,9 +74,8 @@ def fig_5_left(G):
     plt.xlabel("Time ticks")
     plt.ylabel("Fraction of Infected People")
     plt.grid()
-    plt.savefig('fig_5_left.png')
+    plt.savefig('fig_5_left.png')    
     plt.show()
-
 
 def fig_5_right():
     initial_size = int(float(len(E))/(10**(2)))
@@ -84,8 +83,8 @@ def fig_5_right():
     start_time = 0
     end_time = 10
     delta = eig
-    number_of_steps = 100
-    beta_range = scipy.linspace(10**(-2), 10**2, number_of_steps)
+    number_of_steps = 20
+    beta_range = scipy.logspace(10**(-2), 10**2, number_of_steps)
     final_number_of_cured_nodes = scipy.zeros_like(beta_range)
     for i, beta  in enumerate(beta_range):
         final_number_of_cured_nodes[i] = time_evolution_SIR(E, beta, delta, initial_size, start_time, end_time, iterations, "Hi", opt = 'number_of_cured_nodes')
@@ -101,7 +100,7 @@ def fig_5_right():
 
 
 if __name__ == "__main__":
-    fig_5_left(E)
+    #fig_5_left(E)
     fig_5_right()
 
 
