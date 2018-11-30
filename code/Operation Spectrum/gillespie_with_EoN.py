@@ -26,7 +26,7 @@ E = importEdgeListFile("data/asgraph/as20000102.txt", '\t')
 # Simulation parameters
 initial_size = 10  # number of initially infected nodes (randomly distributed)
 iterations = 10  # number of independent simulation runs (overall results are average)
-
+initial_sizes = [1, 5, 10, 50]
 
 eig = obtainMaxEig(E, False, 2)
 print(str(len(E.nodes)) + " nodes")
@@ -82,7 +82,7 @@ def fig_5_left(G, initial_size, iterations):
     plt.xlabel("Time ticks")
     plt.ylabel("Fraction of Infected People")
     plt.grid()
-    plt.savefig('fig_5_left.png')
+    plt.savefig('./images/fig_5_left.png')
     plt.show()
 
 
@@ -100,11 +100,29 @@ def fig_5_right(G, initial_size, iterations):
     plt.xlabel(r'Effective Strength of Virus $\lambda_1\beta/\delta$')
     plt.ylabel("Final Number of Cured Nodes")
     plt.grid()
-    plt.savefig('fig_5_right.png')
+    plt.savefig('./images/fig_5_right.png')
     plt.show()
 
+def fig_5_right_initial(G, initial_sizes, iterations):
+    start_time = 0
+    end_time = 10
+    delta = eig
+    number_of_steps = 100
+    beta_range = scipy.linspace(10 ** (-2), 10 ** 2, number_of_steps)
+    final_number_of_cured_nodes = scipy.zeros_like(beta_range)
+    for j in range(0, len(initial_sizes)):
+        for i, beta in enumerate(beta_range):
+            final_number_of_cured_nodes[i] = time_evolution_SIR(G, beta, delta, initial_sizes[j], start_time, end_time,
+                                                                iterations, "Hi", opt='number_of_cured_nodes')
+        plt.semilogx(beta_range, final_number_of_cured_nodes)
+    plt.grid()
+    plt.xlabel(r'Effective Strength of Virus $\lambda_1\beta/\delta$')
+    plt.ylabel("Final Number of Cured Nodes")
+    plt.grid()
+    # plt.savefig('./images/fig_5_right.png')
+    plt.show()
 
 if __name__ == "__main__":
-    fig_5_left(E, initial_size, iterations)
-    fig_5_right(E, initial_size, iterations)
-
+    #fig_5_left(E, initial_size, iterations)
+    #fig_5_right(E, initial_size, iterations)
+    fig_5_right_initial(E, initial_sizes, iterations)
