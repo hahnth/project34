@@ -19,6 +19,7 @@ source for 'as20000102.txt': https://snap.stanford.edu/data/as-733.html
 
 E = importEdgeListFile("data/asgraph/as20000102.txt", '\t')
 eig = obtainMaxEig(E, False, 2)
+G = nx.Graph(E)
 print("Eigenvalue of the Adjacency-Matrix = " + str(round(eig, 2)))
 
 
@@ -26,19 +27,19 @@ def s_SIR(eig, beta, delta, digits):
     return round(eig*beta/delta, digits)
 
 
-def time_evolution_SIR(E, beta, delta, initial_size,
+def time_evolution_SIR(G, beta, delta, initial_size,
                        start_time, end_time, iterations, label, opt = 'Plot'):
     report_times = scipy.linspace(start_time,end_time,1000)
     Isum = scipy.zeros(len(report_times))
     Rsum = scipy.zeros(len(report_times))
     for i in range(iterations):
         # Selecting initial nodes randomly
-	initial_nodes = random.sample(G.nodes, initial_size)        
-	t, S, I, R = EoN.fast_SIR(G, beta, delta, initial_infecteds = initial_nodes)
+        initial_nodes = random.sample(G.nodes, initial_size)        
+        t, S, I, R = EoN.fast_SIR(G, beta, delta, initial_infecteds = initial_nodes)
         _, newI, newR= EoN.subsample(report_times, t, S, I, R)
         #plt.plot(report_times, newI, linewidth=1, alpha = 0.4)
         Isum += newI
-	Rsum += newR
+        Rsum += newR
     #Average value of all iterations        
     I_average = Isum / float(iterations)
     R_average = Rsum / float(iterations)
@@ -79,7 +80,7 @@ def fig_5_left(G):
     
 def fig_5_right():
     initial_size = int(float(len(E))/(10**(2)))
-    iterations = 100
+    iterations = 10
     start_time = 0
     end_time = 10
     delta = eig
@@ -100,7 +101,7 @@ def fig_5_right():
 
 
 if __name__ == "__main__":
-    fig_5_left()
+    fig_5_left(G)
     fig_5_right()
 
 
