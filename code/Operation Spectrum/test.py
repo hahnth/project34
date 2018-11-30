@@ -1,16 +1,15 @@
-import networkx as ntx
+import warnings
 import matplotlib.cbook
 import matplotlib.pyplot as plot
-import warnings
-
-#suppresses warning while creating plot
-warnings.filterwarnings("ignore",category=matplotlib.cbook.mplDeprecation)
 
 from plotGraph import plotFromGraph
-from fetchData import importMatrixFile, normalizeMatrix, importEdgeListFile, normalizeGraph
+from fetchData import importMatrixFile, importEdgeListFile, normalizeGraph
 from calculateLambda import obtainMaxEig, removeCriticalNode, obtainNVM
 
-#initializes the plot counter
+# suppresses warning while creating plot
+warnings.filterwarnings("ignore", category=matplotlib.cbook.mplDeprecation)
+
+# initializes the plot counter
 plotFromGraph.counter = 1
 
 print("Largest eigenvalues:")
@@ -48,8 +47,8 @@ obtainNVM(E, True, 4)
 
 G = importEdgeListFile(".\data\\asgraph\\asgraph.txt", ':')
 print('Oregon-AS graph')
-#Warning: Can take up to 10 min to plot the graphs and you don't see very much
-#plotFromGraph(G)
+# Warning: Can take up to 10 min to plot the graphs and you don't see very much
+# plotFromGraph(G)
 obtainMaxEig(G, True, 3)
 obtainNVM(G, True, 4)
 
@@ -60,7 +59,7 @@ obtainNVM(G, True, 4)
 
 F = importEdgeListFile('.\data\\terrorist.txt', '\t')
 print("terrorist")
-#F = normalizeGraph(F, 0.5)
+# F = normalizeGraph(F, 0.5)
 obtainMaxEig(F, True, 2)
 obtainNVM(F, True, 4)
 plotFromGraph(F)
@@ -78,10 +77,10 @@ obtainNVM(X2, True, 4)
 plotFromGraph(X2)
 
 # Warning: Large file, takes up to 2 minutes
-#G = importEdgeListFile(".\data\hyves\edges.csv", ',')
-#print("hyves")
-#obtainMaxEig(G, True, 3)
-#obtainNVM(G, True, 4)
+# G = importEdgeListFile(".\data\hyves\edges.csv", ',')
+# print("hyves")
+# obtainMaxEig(G, True, 3)
+# obtainNVM(G, True, 4)
 
-#necessary to avoid blocking of the script execution, plots are displayed when script is done
+# necessary to avoid blocking of the script execution, plots are displayed when script is done
 plot.show()
