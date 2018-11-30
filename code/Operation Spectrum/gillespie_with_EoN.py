@@ -18,11 +18,20 @@ source for 'as20000102.txt': https://snap.stanford.edu/data/as-733.html
 source for 'peer_oregon_010331.txt': http://topology.eecs.umich.edu/data.html, file peer.oregon.010331
 '''
 
+
+# Data source
 E = importEdgeListFile("data/asgraph/as20000102.txt", '\t')
 # E = importEdgeListFile("data/asgraph/peer_oregon_010331.txt", ':')
+
+# Simulation parameters
+initial_size = 10  # number of initially infected nodes (randomly distributed)
+iterations = 10  # number of independent simulation runs (overall results are average)
+
+
 eig = obtainMaxEig(E, False, 2)
 print(str(len(E.nodes)) + " nodes")
 print("Eigenvalue of the Adjacency-Matrix = " + str(round(eig, 2)))
+
 
 def s_SIR(eig, beta, delta, digits):
     return round(eig*beta/delta, digits)
@@ -50,10 +59,8 @@ def time_evolution_SIR(G, beta, delta, initial_size,
         return R_average[-1]
         
 
-def fig_5_left(G):
+def fig_5_left(G, initial_size, iterations):
     digits = 2
-    initial_size = 10# int(float(len(G))/(10**(2)))
-    iterations = 10
     start_time = 0
     end_time = 99
     beta1, beta2, beta3, beta4 = 0.15, 0.05, 0.02, 0.01
@@ -79,9 +86,7 @@ def fig_5_left(G):
     plt.show()
 
 
-def fig_5_right(G):
-    initial_size = 10 # int(float(len(G))/(10**(2)))
-    iterations = 100
+def fig_5_right(G, initial_size, iterations):
     start_time = 0
     end_time = 10
     delta = eig
@@ -99,10 +104,7 @@ def fig_5_right(G):
     plt.show()
 
 
-
-
 if __name__ == "__main__":
-    fig_5_left(E)
-    fig_5_right(E)
-
+    fig_5_left(E, initial_size, iterations)
+    fig_5_right(E, initial_size, iterations)
 
