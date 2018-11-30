@@ -75,7 +75,7 @@ def fig_5_left(G):
     plt.xlabel("Time ticks")
     plt.ylabel("Fraction of Infected People")
     plt.grid()
-    plt.savefig('fig_5_left.png')
+    plt.savefig('build/fig_5_left.png')
     plt.show()
 
 
@@ -95,14 +95,14 @@ def fig_5_right(G):
     plt.xlabel(r'Effective Strength of Virus $\lambda_1\beta/\delta$')
     plt.ylabel("Final Number of Cured Nodes")
     plt.grid()
-    plt.savefig('fig_5_right.png')
+    plt.savefig('build/fig_5_right.png')
     plt.show()
 
 
 
 
 if __name__ == "__main__":
-    #fig_5_left(E)
+    fig_5_left(E)
     fig_5_right(E)
 
 
