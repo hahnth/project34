@@ -1,4 +1,4 @@
-"""Provides the necessary functions to run the SIR simulation in sirSimulation.py"""
+"""Provides functions to run the SIR simulation in sirSimulation.py"""
 
 import EoN  # library providing tools to run fast SIR simulations using the Gillespie algorithm
 import random
@@ -17,20 +17,18 @@ def time_evolution_SIR(G, beta, delta, initial_size,
     Isum = scipy.zeros(len(report_times))
     Rsum = scipy.zeros(len(report_times))
     for i in range(iterations):
-        # Selecting initial nodes randomly
         initial_nodes = random.sample(G.nodes, initial_size)
         t, S, I, R = EoN.fast_SIR(G, beta, delta, initial_infecteds = initial_nodes)
         _, newI, newR= EoN.subsample(report_times, t, S, I, R)
         Isum += newI
         Rsum += newR
-    # Average value of all iterations
     I_average = Isum / float(iterations)
     R_average = Rsum / float(iterations)
     if (opt == 'Plot'):
         plt.loglog(report_times, I_average/(len(G)), label = label, linewidth = 5)
     if (opt == 'number_of_cured_nodes'):
         return R_average[-1]
-        
+
 
 def fig_5_left(G, initial_size, iterations):
     eig = obtainMaxEig(G, False, 0)

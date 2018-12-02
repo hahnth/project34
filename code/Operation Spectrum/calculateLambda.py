@@ -28,7 +28,7 @@ def obtainMaxEig(G, out, digits):
 
 
 def removeCriticalNode(G):  # poor performance due to some workarounds
-    ret = G
+    ret = copy.deepcopy(G)
     """Finds the node, which contributes to the largest eigenvalue the most, an deletes is from G. Therefore,
         the returned graph has the lowest possible largest eigenvalue after removing one node."""
     nodeToRemove = 1
@@ -46,6 +46,7 @@ def removeCriticalNode(G):  # poor performance due to some workarounds
             nodeToRemove = i
             minEig = currentEig
     ret.remove_node(nodeToRemove)
+    print("removed node: " + str(nodeToRemove))
     # Workaround to enable multiple vaccination
     matrix = ntx.adj_matrix(ret)
     ret = ntx.from_scipy_sparse_matrix(matrix)
